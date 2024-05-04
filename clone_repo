@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# this script copies the repo from git hub
+
+# get the username
+echo "Enter UserName: (Github username or the username of the repo you want to clone)"
+read userName
+
+# get the RepoName
+echo "Enter Repo Name: "
+read repoName
+
+# get the access token and hide it so that no one can see it
+echo "Enter the Access Token: (Token is concealed from sight)"
+read -s accessToken 
+
+# clone the repository
+git clone https://$accessToken@github.com/$userName/$repoName.git
+
