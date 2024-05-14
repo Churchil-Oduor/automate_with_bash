@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# script to install and configure nginx server
+sudo apt update
+sudo apt-get -y install nginx # installs the nginx server
+
+server_block_dir=/var/www/greet.com/html/
+sites_available_dir=/etc/nginx/sites-available/
+sites_enabled_dir=/etc/nginx/sites-enabled/
+server_name="localhost 52.91.122.128"
+dot_com_file="greet.com"
+content_to_display="Hello World!"
+
+sudo mkdir -p "$server_block_dir"
+sudo chown -R "$USER:$USER" "$server_block_dir"
+
+sudo chmod -R 755 /var/www
+echo "$content_to_display" > "${server_block_dir}index.html"
+sudo cp "${sites_available_dir}default" "${sites_available_dir}${dot_com_file}"
+
+
+# configuring the 
+sudo sed -i 's/default_server//g' "${sites_available_dir}${dot_com_file}"
+sudo sed -i "s|root /var/www/html;|root /var/www/greet.com/html;|g" "${sites_available_dir}${dot_com_file}"
+sudo sed -i "s|server_name _;|server_name $server_name;|g" "${sites_available_dir}${dot_com_file}"
+
+# deleting the symbolic link of the default nginx sitei
+sudo rm -f "${sites_enabled_dir}default"
+
+# creating a symbolic link in the /etc/nginx/sites-enabled directory
+sudo ln -s "${sites_available_dir}${dot_com_file}" "${sites_enabled_dir}${dot_com_file}"

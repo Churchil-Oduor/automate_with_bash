@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Deleting nginx and all related files
+ 
+sudo systemctl stop nginx
+sudo apt-get remove nginx nginx-common nginx-core
+sudo apt-get purge nginx nginx-common nginx-core
+sudo apt-get autoremove
+
+sudo rm -rf /etc/nginx
+sudo rm -rf /var/www/html
+sudo rm -rf /var/log/nginx
+sudo rm -rf /var/cache/nginx
+
