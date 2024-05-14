@@ -3,12 +3,13 @@
 sudo apt update
 sudo apt-get -y install nginx # installs the nginx server
 
-server_block_dir=/var/www/greet.com/html/
+
 sites_available_dir=/etc/nginx/sites-available/
 sites_enabled_dir=/etc/nginx/sites-enabled/
-server_name="localhost 52.91.122.128"
-dot_com_file="greet.com"
-content_to_display="Hello World!"
+server_name="" # provide aliaa name for the blocj
+dot_com_file="" # specify a name for your dotcom file
+content_to_display="" #message to be sent to the displayed page
+server_block_dir="/var/www/${dot_com_file}/html"
 
 sudo mkdir -p "$server_block_dir"
 sudo chown -R "$USER:$USER" "$server_block_dir"
@@ -32,3 +33,4 @@ if  [ ! -L "${sites_enabled_dir}${dot_com_file}" ]; then
 fi
 # reload the nginx server
 sudo service nginx reload
+echo "Nginx Server Configured Successfully!!"
