@@ -6,9 +6,9 @@ sudo apt-get -y install nginx # installs the nginx server
 server_block_dir=/var/www/greet.com/html/
 sites_available_dir=/etc/nginx/sites-available/
 sites_enabled_dir=/etc/nginx/sites-enabled/
-server_name="localhost 52.91.122.128"
-dot_com_file="greet.com"
-content_to_display="Hello World!"
+server_name="" # feed the alias names of the server here
+dot_com_file="" #enter the dot com file
+content_to_display="" # enter the content to display here
 
 sudo mkdir -p "$server_block_dir"
 sudo chown -R "$USER:$USER" "$server_block_dir"
