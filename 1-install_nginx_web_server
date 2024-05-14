@@ -18,7 +18,7 @@ echo "$content_to_display" > "${server_block_dir}index.html"
 sudo cp "${sites_available_dir}default" "${sites_available_dir}${dot_com_file}"
 
 
-# configuring the 
+# configuring the server block  
 sudo sed -i 's/default_server//g' "${sites_available_dir}${dot_com_file}"
 sudo sed -i "s|root /var/www/html;|root /var/www/greet.com/html;|g" "${sites_available_dir}${dot_com_file}"
 sudo sed -i "s|server_name _;|server_name $server_name;|g" "${sites_available_dir}${dot_com_file}"
